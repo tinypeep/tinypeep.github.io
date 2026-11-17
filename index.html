@@ -3,8 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>.tinypeep</title>
-<meta name="description" content="tiny, free apps for Windows. small software for people who don't fit neatly into boxes.">
+<title>.tinypeep · tiny, free apps for windows</title>
+<meta name="description" content="tiny, free apps for windows. .tinypeep is a small studio making software for people who don't fit neatly into boxes: cue, a video and music player, and omni, a universal inbox for files.">
+<link rel="canonical" href="https://tinypeep.github.io/">
+<meta name="theme-color" content="#030303">
+<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website"><meta property="og:site_name" content=".tinypeep">
+<meta property="og:title" content=".tinypeep · tiny, free apps for windows"><meta property="og:description" content="tiny, free apps for windows. .tinypeep is a small studio making software for people who don't fit neatly into boxes: cue, a video and music player, and omni, a universal inbox for files.">
+<meta property="og:url" content="https://tinypeep.github.io/"><meta property="og:image" content="https://tinypeep.github.io/img/og-tinypeep.png">
+<meta property="og:image:width" content="1280"><meta property="og:image:height" content="640">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://tinypeep.github.io/img/og-tinypeep.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": ".tinypeep", "url": "https://tinypeep.github.io/", "logo": "https://tinypeep.github.io/apple-touch-icon.png", "sameAs": ["https://github.com/tinypeep", "https://buymeacoffee.com/tinypeep"]}</script>
 <style>
 /* idea: a dark room at night. a tiny cue window plays on the table; its light is the only light. it reveals
    the studio's name on the wall and falls on two eyes peeking over the table.
@@ -585,11 +594,11 @@ footer.short .fgrid { padding-top: var(--s5); box-shadow: inset 0 3px 0 #1c1c20;
 
 <nav class="top" aria-label="main">
   <div class="wrap">
-    <a href="#home" class="brand" data-route="home"><span class="mini" id="mini" aria-hidden="true"><i></i><i></i></span><span>.tinypeep</span></a>
+    <a href="/" class="brand" data-route="home"><span class="mini" id="mini" aria-hidden="true"><i></i><i></i></span><span>.tinypeep</span></a>
     <ul>
-      <li><a href="#cue" data-route="cue">cue</a></li>
-      <li><a href="#omni" data-route="omni">omni</a></li>
-      <li><a href="#about" data-route="about">about</a></li>
+      <li><a href="/cue/" data-route="cue">cue</a></li>
+      <li><a href="/omni/" data-route="omni">omni</a></li>
+      <li><a href="/about/" data-route="about">about</a></li>
       <li><a href="https://github.com/tinypeep">github</a></li>
     </ul>
   </div>
@@ -620,14 +629,14 @@ footer.short .fgrid { padding-top: var(--s5); box-shadow: inset 0 3px 0 #1c1c20;
       <canvas class="pool" id="pool" width="32" height="18" aria-hidden="true"></canvas>
       <div class="wrap">
         <div class="shelf grid" id="shelf">
-          <a class="slot s-tv" href="#cue" id="tv" data-obj="tv">
-            <span class="thing"><span class="tvwin" id="tvwin"><span class="crt" aria-hidden="true"></span><video id="vid" src="media/cue-loop.mp4" poster="img/cue-poster.jpg" muted loop playsinline preload="auto" aria-label="Cue playing a star rising behind a planet"></video></span></span>
+          <a class="slot s-tv" href="/cue/" id="tv" data-obj="tv">
+            <span class="thing"><span class="tvwin" id="tvwin"><span class="crt" aria-hidden="true"></span><video id="vid" src="/media/cue-loop.mp4" poster="/img/cue-poster.jpg" muted loop playsinline preload="auto" aria-label="Cue playing a star rising behind a planet"></video></span></span>
             <span class="lab"><b>cue.</b><span class="l1">the video is the interface.</span><span class="l2">click to step inside.</span></span>
           </a>
           <div class="slot s-eyes" id="eyeslot">
             <div class="peekbox" id="peekbox"></div>
           </div>
-          <a class="slot s-omni" href="#omni" id="keys" data-obj="omni" aria-label="omni, coming soon">
+          <a class="slot s-omni" href="/omni/" id="keys" data-obj="omni" aria-label="omni, coming soon">
             <span class="thing"><span class="key px k1">ctrl</span><span aria-hidden="true">+</span><span class="key px k2">v</span><span class="done" aria-hidden="true">done.</span></span>
             <span class="lab" aria-hidden="true"><b>omni.</b><span>coming soon</span></span>
           </a>
@@ -652,14 +661,14 @@ footer.short .fgrid { padding-top: var(--s5); box-shadow: inset 0 3px 0 #1c1c20;
 <section class="view cue" id="v-cue" data-view="cue" hidden>
   <div class="pbar" id="pbar">
     <div class="wrap">
-      <a href="#cue" class="pname" data-jump="film">cue.</a>
+      <a href="/cue/" class="pname" data-jump="film">cue.</a>
       <ul class="plinks" id="plinks">
-        <li><a href="#cue" data-jump="film">overview</a></li>
-        <li><a href="#cue" data-jump="music">music</a></li>
-        <li><a href="#cue" data-jump="around">tools</a></li>
-        <li><a href="#cue" data-jump="new">new in 1.4</a></li>
-        <li><a href="#cue" data-jump="shortcuts">keys</a></li>
-        <li><a href="#cue" data-jump="specs">specs</a></li>
+        <li><a href="/cue/" data-jump="film">overview</a></li>
+        <li><a href="/cue/" data-jump="music">music</a></li>
+        <li><a href="/cue/" data-jump="around">tools</a></li>
+        <li><a href="/cue/" data-jump="new">new in 1.4</a></li>
+        <li><a href="/cue/" data-jump="shortcuts">keys</a></li>
+        <li><a href="/cue/" data-jump="specs">specs</a></li>
       </ul>
       <a class="btn solid sm px" href="https://apps.microsoft.com/detail/9PJS1Q8KH61S">get cue</a>
     </div>
@@ -713,7 +722,7 @@ footer.short .fgrid { padding-top: var(--s5); box-shadow: inset 0 3px 0 #1c1c20;
       <div class="mwin px" id="mwin">
         <canvas id="mglow" width="64" height="36" aria-hidden="true"></canvas>
         <canvas id="spec" aria-hidden="true"></canvas>
-        <img class="mcover" id="mcover" src="img/cover.jpg" alt="album cover: a glass orchid growing from the asphalt" loading="lazy">
+        <img class="mcover" id="mcover" src="/img/cover.jpg" alt="album cover: a glass orchid growing from the asphalt" loading="lazy">
         <p class="mtext" id="mtext"><b>antropoceno</b><span>fóssil de glitter</span></p>
       </div>
       <div class="mtools">
@@ -740,19 +749,19 @@ footer.short .fgrid { padding-top: var(--s5); box-shadow: inset 0 3px 0 #1c1c20;
     <div class="bento grid body-gap">
       <article class="tile t-mini px">
         <div class="art desk" id="desk">
-          <img src="img/desk.jpg" alt="" loading="lazy">
-          <div class="mp" id="mp"><video id="mpv" src="media/cue-loop.mp4" poster="img/cue-poster.jpg" muted loop playsinline preload="none" aria-label="the mini player, playing the film"></video></div>
+          <img src="/img/desk.jpg" alt="" loading="lazy">
+          <div class="mp" id="mp"><video id="mpv" src="/media/cue-loop.mp4" poster="/img/cue-poster.jpg" muted loop playsinline preload="none" aria-label="the mini player, playing the film"></video></div>
           <span class="hint" id="mphint">drag it. let go near a corner.</span>
         </div>
         <div class="copy"><h3 class="t-h3">the mini player.</h3><p class="t-small">ctrl+m and the film moves to a small window. it stays where you leave it, and glides into a corner when you let go beside one.</p></div>
       </article>
       <article class="tile t-remote px">
-        <div class="art"><img src="img/remote.jpg" alt="Cue's phone remote: the song, a progress bar and a click wheel" loading="lazy"></div>
+        <div class="art"><img src="/img/remote.jpg" alt="Cue's phone remote: the song, a progress bar and a click wheel" loading="lazy"></div>
         <div class="copy"><h3 class="t-h3">your phone is the remote.</h3><p class="t-small">scan a QR code on the same network. nothing to install. a throwback click wheel for time, volume and up next.</p></div>
       </article>
       <article class="tile t-subs px">
         <div class="art sart" id="sart">
-          <img src="img/warm.jpg" alt="" loading="lazy">
+          <img src="/img/warm.jpg" alt="" loading="lazy">
           <p class="sline" id="sline">every star you see is already the past.</p>
         </div>
         <div class="copy">
@@ -766,9 +775,9 @@ footer.short .fgrid { padding-top: var(--s5); box-shadow: inset 0 3px 0 #1c1c20;
       <article class="tile t-queue px">
         <div class="art qart">
           <ol class="queue" id="queue">
-            <li class="now"><img src="img/q0.jpg" alt=""><span><b>antropoceno</b><em><span class="qs">now playing</span><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span></em></span></li>
-            <li><img src="img/q1.jpg" alt=""><span><b>estrato</b><em><span class="qs">next</span><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span></em></span></li>
-            <li><img src="img/q2.jpg" alt=""><span><b>testemunho</b><em><span class="qs">3 / 3</span><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span></em></span></li>
+            <li class="now"><img src="/img/q0.jpg" alt=""><span><b>antropoceno</b><em><span class="qs">now playing</span><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span></em></span></li>
+            <li><img src="/img/q1.jpg" alt=""><span><b>estrato</b><em><span class="qs">next</span><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span></em></span></li>
+            <li><img src="/img/q2.jpg" alt=""><span><b>testemunho</b><em><span class="qs">3 / 3</span><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span></em></span></li>
             <li class="add"><span class="plus" aria-hidden="true">+</span><span><b>add tracks</b><em>or drag them here</em></span></li>
           </ol>
           <div class="qfoot" aria-hidden="true"><span>+ files</span><span>+ folder</span><span>clear queue</span></div>
@@ -788,9 +797,9 @@ footer.short .fgrid { padding-top: var(--s5); box-shadow: inset 0 3px 0 #1c1c20;
       <article class="px" style="--c:#b07ae0">
         <div class="art">
           <div class="thumbs" aria-hidden="true">
-            <figure><img src="img/tp0.png" alt=""><i style="--w:62%"></i><figcaption>12 min</figcaption></figure>
-            <figure><img src="img/tp1.png" alt=""><i style="--w:30%"></i><figcaption>3 songs</figcaption></figure>
-            <figure><img src="img/tp2.png" alt=""><i style="--w:84%"></i><figcaption>4 min</figcaption></figure>
+            <figure><img src="/img/tp0.png" alt=""><i style="--w:62%"></i><figcaption>12 min</figcaption></figure>
+            <figure><img src="/img/tp1.png" alt=""><i style="--w:30%"></i><figcaption>3 songs</figcaption></figure>
+            <figure><img src="/img/tp2.png" alt=""><i style="--w:84%"></i><figcaption>4 min</figcaption></figure>
           </div>
         </div>
         <div class="copy"><h3 class="t-h3">a home with pictures.</h3><p class="t-small">every recent file shows where you stopped, or the album cover, and how much is left.</p></div>
@@ -835,7 +844,7 @@ footer.short .fgrid { padding-top: var(--s5); box-shadow: inset 0 3px 0 #1c1c20;
       <div class="kdemo">
         <div class="dframe">
           <div class="dwin px" id="dwin" tabindex="0" role="application" aria-label="a cue window you can try with the keyboard">
-            <video id="dv" src="media/cue-loop.mp4" poster="img/cue-poster.jpg" muted loop playsinline preload="none"></video>
+            <video id="dv" src="/media/cue-loop.mp4" poster="/img/cue-poster.jpg" muted loop playsinline preload="none"></video>
             <div class="sheet" id="sheet">
               <h4>playback</h4>
               <ul>
@@ -936,8 +945,8 @@ footer.short .fgrid { padding-top: var(--s5); box-shadow: inset 0 3px 0 #1c1c20;
     </div>
     <div class="fgrid grid t-small">
       <div><p class="fw">.tinypeep</p><p class="ft muted">be strange. be kind. stay free.</p></div>
-      <div><h4 class="t-cap">apps</h4><ul><li><a href="#cue">cue</a></li><li><a href="#omni">omni</a> <span style="color:var(--fg-3)">soon</span></li></ul></div>
-      <div><h4 class="t-cap">studio</h4><ul><li><a href="#about">about</a></li><li><a href="https://github.com/tinypeep">github</a></li><li><a href="https://buymeacoffee.com/tinypeep">buy me a coffee</a></li></ul></div>
+      <div><h4 class="t-cap">apps</h4><ul><li><a href="/cue/">cue</a></li><li><a href="/omni/">omni</a> <span style="color:var(--fg-3)">soon</span></li></ul></div>
+      <div><h4 class="t-cap">studio</h4><ul><li><a href="/about/">about</a></li><li><a href="https://github.com/tinypeep">github</a></li><li><a href="https://buymeacoffee.com/tinypeep">buy me a coffee</a></li></ul></div>
       <div><h4 class="t-cap">say hi</h4><ul><li><a href="mailto:tinypeepstudio@gmail.com">tinypeepstudio@gmail.com</a></li></ul></div>
     </div>
     <div class="fbase t-cap"><span>made in brazil by gabriel benzoni</span><span>windows today. macos and linux later.</span></div>
@@ -1134,7 +1143,7 @@ footer.short .fgrid { padding-top: var(--s5); box-shadow: inset 0 3px 0 #1c1c20;
     return { set(x) { on = x; if (RM) return; if (x) v.play().then(() => tick(performance.now())).catch(() => {}); else v.pause(); } };
   }
   const dHome = driver(vid, v => { if (route === 'home') sampleHome(v); else if (route === 'cue' && sampleFilmRef) sampleFilmRef(v); });
-  const poster = new Image(); poster.onload = () => { sampleHome(poster); if (sampleFilmRef) sampleFilmRef(poster); }; poster.src = 'img/cue-poster.jpg';
+  const poster = new Image(); poster.onload = () => { sampleHome(poster); if (sampleFilmRef) sampleFilmRef(poster); }; poster.src = '/img/cue-poster.jpg';
   new IntersectionObserver(es => es.forEach(e => dHome.set(e.isIntersecting)), { rootMargin: '100px' }).observe(vid);
 
   /* ================= nav eyes ================= */
@@ -1144,6 +1153,7 @@ footer.short .fgrid { padding-top: var(--s5); box-shadow: inset 0 3px 0 #1c1c20;
 
   /* ================= routes ================= */
   const VIEWS = ['home', 'cue', 'omni', 'about'];
+  const TITLES = {"home": ".tinypeep \u00b7 tiny, free apps for windows", "cue": "cue \u00b7 a free video and music player for windows", "omni": "omni \u00b7 a universal inbox for files \u00b7 .tinypeep", "about": "about \u00b7 .tinypeep"};
   let route = 'home';
   const tvwin = $('#tvwin'), vslot = $('#vslot');
   function show(name, keepVideo) {
@@ -1153,11 +1163,16 @@ footer.short .fgrid { padding-top: var(--s5); box-shadow: inset 0 3px 0 #1c1c20;
     $('#footer').classList.toggle('short', name === 'home');
     if (!keepVideo) { if (name === 'cue') vslot.appendChild(vid); else tvwin.appendChild(vid); }
     if (!RM) vid.play().catch(() => {});
-    document.title = name === 'home' ? '.tinypeep' : name + ' · .tinypeep';
+    document.title = TITLES[name];
     if (name === 'home') requestAnimationFrame(() => { layout(); });
     if (name === 'cue') requestAnimationFrame(() => { cueLayout(); });
   }
-  function fromHash() { const h = location.hash.slice(1); return VIEWS.includes(h) ? h : 'home'; }
+  const PATH = { home: '/', cue: '/cue/', omni: '/omni/', about: '/about/' };
+  function fromHash() {
+    const h = location.hash.slice(1);
+    if (VIEWS.includes(h)) { history.replaceState(null, '', PATH[h]); return h; }   /* old #links still land */
+    const p = location.pathname.replace(/\/+$/, '').split('/').pop(); return VIEWS.includes(p) ? p : 'home';
+  }
   /* moving between pages: the whole site blinks. the lids close, the two eyes open in the dark, the lids open on the new page */
   const lids = $('#lids'), [lt, lb] = lids.querySelectorAll('i'), le = $('#le');
   le.innerHTML = [0, 1].map(() => `<svg viewBox="0 0 10 10" shape-rendering="crispEdges" class="closed">${SH}</svg>`).join('');
@@ -1191,7 +1206,14 @@ footer.short .fgrid { padding-top: var(--s5); box-shadow: inset 0 3px 0 #1c1c20;
       }, 230);
     });
   }
-  addEventListener('hashchange', () => { const n = fromHash(); if (n !== route) go(n); });
+  addEventListener('popstate', () => { const n = fromHash(); if (n !== route) go(n); });
+  document.addEventListener('click', e => {
+    if (e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const a = e.target.closest('a[href^="/"]'); if (!a || a.target) return;
+    const n = Object.keys(PATH).find(k => PATH[k] === a.getAttribute('href')); if (!n) return;
+    e.preventDefault(); if (n === route) { scrollTo({ top: 0, behavior: RM ? 'auto' : 'smooth' }); return; }
+    history.pushState(null, '', PATH[n]); go(n);
+  });
 
   /* the dive: click the little window and fall into it */
   tv.addEventListener('click', e => {
@@ -1203,7 +1225,7 @@ footer.short .fgrid { padding-top: var(--s5); box-shadow: inset 0 3px 0 #1c1c20;
     $('#v-home').classList.add('diving'); tlook.x = -1; tlook.y = .3; forced = 'happy'; shape(); kick();
     requestAnimationFrame(() => requestAnimationFrame(() => { dive.style.cssText = `left:0px;top:0px;width:${innerWidth}px;height:${innerHeight}px`; }));
     setTimeout(() => {
-      history.pushState(null, '', '#cue'); show('cue', true); scrollTo(0, 0);
+      history.pushState(null, '', '/cue/'); show('cue', true); scrollTo(0, 0);
       vslot.appendChild(vid); vid.play().catch(() => {}); dive.remove();
       $('#v-home').classList.remove('diving'); forced = null; shape();
     }, 760);
@@ -1272,7 +1294,7 @@ footer.short .fgrid { padding-top: var(--s5); box-shadow: inset 0 3px 0 #1c1c20;
         <div class="r1"><div class="z zl">${left}</div><div class="z zc">${B(bm(IC.rew), 'back 15 s', '')}${B(bm(IC.play, 'i-play') + bm(IC.pause, 'i-pause'), 'play / pause', 'space', 'pp')}${B(bm(IC.fwd), 'forward 15 s', '')}</div><div class="z zr">${right}</div></div>
         <div class="r2"><span class="tm t0"></span><span class="tbar">${CH.slice(1).map(c => `<i class="ch" style="left:${(c.t / TOTAL * 100).toFixed(2)}%"></i>`).join('')}<i class="pl"></i><i class="kn"></i></span><span class="tm t1">${fmt(TOTAL)}</span></div>
       </div>
-      <div class="cw-prev"><img src="img/cue-poster.jpg" alt=""><span></span></div>
+      <div class="cw-prev"><img src="/img/cue-poster.jpg" alt=""><span></span></div>
       <div class="cw-tip"></div>`;
     root.appendChild(cw);
     const sub = document.createElement('p'); sub.className = 'subline'; sub.textContent = 'every star you see is already the past.'; root.appendChild(sub);
@@ -1460,7 +1482,7 @@ footer.short .fgrid { padding-top: var(--s5); box-shadow: inset 0 3px 0 #1c1c20;
     const d = x.getImageData(0, 0, 8, 8).data, side = s => { let r = 0, g = 0, b = 0; for (let y = 0; y < 8; y++) for (let i = s * 4; i < s * 4 + 4; i++) { const k = (y * 8 + i) * 4; r += d[k]; g += d[k + 1]; b += d[k + 2]; } const m = Math.max(r, g, b) || 1; return [r / m * 255, g / m * 255, b / m * 255].map(Math.round); };
     colL = side(0); colR = side(1); mDraw(performance.now());
   } catch (e) { } };
-  cimg.src = 'img/cover.jpg';
+  cimg.src = '/img/cover.jpg';
   function mLayout() {
     const w = mwin.clientWidth, h = mwin.clientHeight; if (!w) return;
     const dpr = Math.min(2, Math.round(devicePixelRatio || 1)) || 1, u = Math.max(2, Math.round(h / 300)), pitch = 4 * u;
