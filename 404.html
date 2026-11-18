@@ -639,6 +639,14 @@ footer { padding-top: var(--s8); }
   .fgrid .fw { font-size: 30px; line-height: 36px; letter-spacing: -1px; }
   .fbase { flex-direction: column; gap: var(--s1); }
 }
+
+/* language toggle: the language you're reading is the bright one */
+.lang { font: inherit; color: var(--fg-3); background: none; border: 0; padding: var(--s1) 0; cursor: pointer; display: inline-flex; gap: 4px; }
+.lang i { font-style: normal; opacity: .6; }
+.lang:hover { color: var(--fg-2); }
+html[lang="en"] .lang [data-l="en"], html[lang="pt-BR"] .lang [data-l="pt"] { color: var(--fg); }
+.fbase .lang { padding: 0; margin-left: 4px; }
+@media (max-width: 760px) { .top ul { gap: var(--s3); } .top .brand > span:last-child { display: none; } }
 </style>
 </head>
 <body>
@@ -651,6 +659,7 @@ footer { padding-top: var(--s8); }
       <li><a href="/omni/" data-route="omni">omni</a></li>
       <li><a href="/about/" data-route="about">about</a></li>
       <li><a href="https://github.com/tinypeep">github</a></li>
+      <li><button type="button" class="lang"><span data-l="en">en</span><i>/</i><span data-l="pt">pt</span></button></li>
     </ul>
   </div>
 </nav>
@@ -1000,7 +1009,7 @@ footer { padding-top: var(--s8); }
       <div><h4 class="t-cap">studio</h4><ul><li><a href="/about/">about</a></li><li><a href="https://github.com/tinypeep">github</a></li><li><a href="https://buymeacoffee.com/tinypeep">buy me a coffee</a></li></ul></div>
       <div><h4 class="t-cap">say hi</h4><ul><li><a href="mailto:tinypeepstudio@gmail.com">tinypeepstudio@gmail.com</a></li></ul></div>
     </div>
-    <div class="fbase t-cap"><span>made in brazil by gabriel benzoni</span><span>windows today. macos and linux later.</span></div>
+    <div class="fbase t-cap"><span>made in brazil by gabriel benzoni · <button type="button" class="lang"><span data-l="en">en</span><i>/</i><span data-l="pt">pt</span></button></span><span>windows today. macos and linux later.</span></div>
   </div>
 </footer>
 
@@ -1010,6 +1019,37 @@ footer { padding-top: var(--s8); }
 (() => {
   'use strict';
   const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ================= language: english or português ================= */
+  const DICT = {"cue": "cue", "about": "sobre", "tiny, free apps for windows": "apps pequenos e gratuitos para windows", "small software for people": "software pequeno para quem", "who don't fit neatly into boxes.": "não cabe direitinho em caixinhas.", "the video is the interface.": "o vídeo é a interface.", "click to step inside.": "clique para entrar.", "done.": "pronto.", "coming soon": "em breve", "coffee.": "café.", "keep it going": "ajude a continuar", "overview": "visão geral", "music": "música", "tools": "recursos", "new in 1.4": "novo na 1.4", "keys": "teclas", "specs": "detalhes", "get cue": "baixar o cue", "every star you see is already the past.": "toda estrela que você vê já é passado.", "a video and music player for windows": "um player de vídeo e música para windows", "get it on microsoft store": "baixar na microsoft store", "download on github": "baixar no github", "version 1.4 · free · windows x64": "versão 1.4 · grátis · windows x64", "scroll": "role", "01 · the window": "01 · a janela", "just the film. nothing else.": "só o filme. mais nada.", "cue opens in the shape of your video. no toolbars, no frames, nothing between you and the picture.": "o cue abre no formato do seu vídeo. sem barras, sem molduras, nada entre você e a imagem.", "02 · the controls": "02 · os controles", "there when you reach for them.": "aparecem quando você procura.", "move the mouse and the bar comes back. keep still, and it rests. try it on the picture.": "mexa o mouse e a barra volta. fique parado, e ela descansa. experimente na imagem.", "03 · the light": "03 · a luz", "light that follows the scene.": "uma luz que acompanha a cena.", "the window glows with the colours of what you're watching, like a screen in a dark room.": "a janela brilha com as cores do que você está vendo, como uma tela num quarto escuro.", "04 · new in 1.4": "04 · novo na 1.4", "chapters, right on the timeline.": "capítulos, direto na linha do tempo.", "jump between them with": "pule entre eles com", "and": "e", ", or pick one from the ··· menu.": ", ou escolha um no menu ···.", "songs get a stage too.": "as músicas também ganham palco.", "the cover, sharp in the middle. the spectrum opens like wings beside it, the bass closest, and a soft light in the cover's colours swells with the music.": "a capa, nítida no meio. o espectro se abre como asas ao lado dela, com os graves mais perto, e uma luz suave nas cores da capa cresce com a música.", "cover + spectrum": "capa + espectro", "both": "os dois", "spectrum only": "só espectro", "spectrum": "espectro", "cover only": "só capa", "cover": "capa", "color": "cor", "black & white": "preto e branco", "b & w": "p&b", "the same choices as cue's own menu. point at the cover, too.": "as mesmas opções do menu do cue. passe o mouse na capa também.", "around the player": "em volta do player", "everything you need. nothing in the way.": "tudo o que você precisa. nada no caminho.", "drag it. let go near a corner.": "arraste. solte perto de um canto.", "the mini player.": "o mini player.", "ctrl+m and the film moves to a small window. it stays where you leave it, and glides into a corner when you let go beside one.": "ctrl+m e o filme vai para uma janelinha. ela fica onde você deixar, e desliza para o canto quando você solta perto de um.", "your phone is the remote.": "seu celular é o controle.", "scan a QR code on the same network. nothing to install. a throwback click wheel for time, volume and up next.": "leia um QR code na mesma rede. nada para instalar. uma click wheel retrô para tempo, volume e fila.", "subtitles, your way.": "legendas do seu jeito.", "font, size, background and position. drag them where you like.": "fonte, tamanho, fundo e posição. arraste para onde quiser.", "bottom": "embaixo", "top": "em cima", "now playing": "tocando agora", "next": "a seguir", "add tracks": "adicionar faixas", "or drag them here": "ou arraste para cá", "+ files": "+ arquivos", "+ folder": "+ pasta", "clear queue": "limpar fila", "up next.": "a seguir.", "a queue of files and folders, one click away, and shared with the phone.": "uma fila de arquivos e pastas, a um clique, e compartilhada com o celular.", "fresh out of the oven.": "saiu do forno.", "3 songs": "3 músicas", "a home with pictures.": "uma tela inicial com imagens.", "every recent file shows where you stopped, or the album cover, and how much is left.": "cada arquivo recente mostra onde você parou, ou a capa do álbum, e quanto falta.", "02 · the dark side": "02 · o lado escuro", "01 · opening": "01 · abertura", "03 · first light": "03 · primeira luz", "04 · orbit": "04 · órbita", "chapters.": "capítulos.", "marked on the timeline and listed in the ··· menu. jump between them with page up and page down.": "marcados na linha do tempo e listados no menu ···. pule entre eles com page up e page down.", "playing": "tocando", "nothing happening. resting.": "nada acontecendo. descansando.", "lighter and faster.": "mais leve e mais rápido.", "films open in their own shape, timeline previews arrive sooner, and cue rests when nothing is happening.": "os filmes abrem no próprio formato, as prévias da linha do tempo chegam antes, e o cue descansa quando nada está acontecendo.", "made for the keyboard": "feito para o teclado", "your hands never leave the keys.": "suas mãos nunca saem das teclas.", "click the picture, then try them. they work here just like they do in cue.": "clique na imagem e experimente. elas funcionam aqui igualzinho ao cue.", "space": "espaço", "play and pause": "tocar e pausar", "back and forward 5 seconds": "voltar e avançar 5 segundos", "volume, up to 125%": "volume, até 125%", "mute": "sem som", "subtitles on and off": "ligar e desligar legendas", "full screen": "tela cheia", "every shortcut, on one sheet": "todos os atalhos, numa folha só", "playback": "reprodução", "play / pause": "tocar / pausar", "seek 5 s": "pular 5 s", "left right": "esquerda direita", "seek 30 s": "pular 30 s", "shift + arrows": "shift + setas", "up down": "cima baixo", "speed": "velocidade", "chapters": "capítulos", "subtitles": "legendas", "up next": "a seguir", "this sheet": "esta folha", "f or esc to leave full screen": "f ou esc para sair da tela cheia", "click to try": "clique para testar", "the dark side": "o lado escuro", "now": "agora", "first light": "primeira luz", "orbit": "órbita", "opening": "abertura", "click the picture, then press a key.": "clique na imagem e aperte uma tecla.", "listening. press esc to let go.": "ouvindo. aperte esc para soltar.", "the details": "os detalhes", "small app. big screens.": "app pequeno. telas grandes.", "languages, picked from windows or chosen in the app": "idiomas, pegos do windows ou escolhidos no app", "interface sizes that follow the window and the screen": "tamanhos de interface que acompanham a janela e a tela", "the interface scales with your screen, all the way up": "a interface cresce com a sua tela, até lá em cima", "free": "grátis", "and open source, under GPL-3.0": "e de código aberto, sob a GPL-3.0", "system": "sistema", "windows, x64. no administrator rights needed.": "windows, x64. não precisa de administrador.", "plays": "toca", "films, series and music, built on mpv. episodes of a show become one entry on the home screen.": "filmes, séries e música, feito sobre o mpv. os episódios de uma série viram um item só na tela inicial.", "remembers": "lembra", "where every film stopped, in one window. timeline previews on demand.": "onde cada filme parou, numa janela só. prévias da linha do tempo quando você quiser.", "windows": "janelas", "mini player, always on top, full screen. two control styles.": "mini player, sempre no topo, tela cheia. dois estilos de controle.", "remote": "controle", "any phone on the same network. pair with a QR code and a six-digit code. nothing to install.": "qualquer celular na mesma rede. pareie com um QR code e um código de seis dígitos. nada para instalar.", "source": "código", ". read the code, report a bug, send a fix.": ". leia o código, reporte um bug, mande uma correção.", "get cue.": "baixe o cue.", "free for windows. macos and linux later.": "grátis para windows. macos e linux depois.", "github releases": "versões no github", "source code": "código-fonte", "version 1.4 · windows x64 · no administrator rights needed": "versão 1.4 · windows x64 · não precisa de administrador", "a universal inbox for files": "uma caixa de entrada universal para arquivos", "copy, ctrl+v, done.": "copie, ctrl+v, pronto.", "a small window for videos, images, audio and files. paste a link, or drop a file, and omni downloads, converts or compresses it. the file decides.": "uma janelinha para vídeos, imagens, áudio e arquivos. cole um link, ou solte um arquivo, e o omni baixa, converte ou comprime. quem decide é o arquivo.", "the rule omni lives by": "a regra do omni", "omni should never ask a question it can safely answer itself.": "o omni nunca deve perguntar o que ele mesmo pode responder com segurança.", "follow on github": "acompanhe no github", "about the studio": "sobre o estúdio", "small software for people who don't fit neatly into boxes.": "software pequeno para quem não cabe direitinho em caixinhas.", "be strange. be kind. stay free.": "seja estranho. seja gentil. seja livre.", "fewer buttons.": "menos botões.", "fewer questions.": "menos perguntas.", "the face talks first.": "o rosto fala primeiro.", "who.": "quem.", ".tinypeep is gabriel benzoni, an art director in brazil, making the apps he wanted to use. free, and open source.": "a .tinypeep é o gabriel benzoni, diretor de arte no brasil, fazendo os apps que ele queria usar. grátis e de código aberto.", "how.": "como.", "performance and quality go together. animations that mean something. nothing that weighs on your pc.": "desempenho e qualidade andam juntos. animações que querem dizer algo. nada que pese no seu pc.", "help.": "ajuda.", "found a bug? open an issue on": "achou um bug? abra uma issue no", ". want to keep it going?": ". quer ajudar a continuar?", "buy me a coffee": "me paga um café", ". contact: tinypeepstudio@gmail.com": ". contato: tinypeepstudio@gmail.com", "goodnight.": "boa noite.", "soon": "em breve", "studio": "estúdio", "say hi": "diga oi", "made in brazil by gabriel benzoni": "feito no brasil por gabriel benzoni", "windows today. macos and linux later.": "windows hoje. macos e linux depois.", "Cue playing a star rising behind a planet": "Cue tocando uma estrela nascendo atrás de um planeta", "omni, coming soon": "omni, em breve", "home": "início", "always on top": "sempre no topo", "minimize": "minimizar", "maximize": "maximizar", "close": "fechar", "back 15 s": "voltar 15 s", "forward 15 s": "avançar 15 s", "repeat": "repetir", "more": "mais", "album cover: a glass orchid growing from the asphalt": "capa do álbum: uma orquídea de vidro brotando do asfalto", "look": "visual", "colour": "cor", "the mini player, playing the film": "o mini player, tocando o filme", "back to full size": "voltar ao tamanho normal", "Cue's phone remote: the song, a progress bar and a click wheel": "o controle do Cue no celular: a música, uma barra de progresso e uma click wheel", "subtitle size": "tamanho da legenda", "subtitle position": "posição da legenda", "left arrow": "seta para a esquerda", "right arrow": "seta para a direita", "up arrow": "seta para cima", "down arrow": "seta para baixo", "a cue window you can try with the keyboard": "uma janela do cue para testar com o teclado", "you came to watch a film, not a player. so cue steps aside, and comes back the moment you need it.": "você veio ver um filme, não um player. então o cue sai da frente, e volta no momento em que você precisa.", "version 1.4": "versão 1.4", ".tinypeep · tiny, free apps for windows": ".tinypeep · apps pequenos e gratuitos para windows", "cue · a free video and music player for windows": "cue · um player de vídeo e música grátis para windows", "omni · a universal inbox for files · .tinypeep": "omni · uma caixa de entrada universal para arquivos · .tinypeep", "about · .tinypeep": "sobre · .tinypeep", ".tinypeep": ".tinypeep", "cue · .tinypeep": "cue · .tinypeep", "omni · .tinypeep": "omni · .tinypeep", "made in brazil by gabriel benzoni ·": "feito no brasil por gabriel benzoni ·"};
+  let LANG = (() => { try { const s = localStorage.getItem('tp-lang'); if (s === 'en' || s === 'pt') return s; } catch (e) { }
+    return (navigator.languages || [navigator.language || '']).some(l => /^pt/i.test(l)) ? 'pt' : 'en'; })();
+  const t = s => (LANG === 'pt' && DICT[s]) || s;
+  const LANGHOOKS = [];
+  function setT(el, en) { el.dataset.en = en; el.textContent = t(en); }
+  let TXT = null, ATR = null;
+  function collectText() {
+    TXT = []; ATR = [];
+    const w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT); let n;
+    while ((n = w.nextNode())) {
+      if (n.parentElement.closest('script, style, svg, #reveal, .lang')) continue;
+      const k = n.nodeValue.replace(/\s+/g, ' ').trim(); if (DICT[k]) TXT.push([n, n.nodeValue, k]);
+    }
+    document.querySelectorAll('[aria-label], [alt], [data-tip]').forEach(e => ['aria-label', 'alt', 'data-tip'].forEach(a => { const v = e.getAttribute(a); if (v && DICT[v]) ATR.push([e, a, v]); }));
+  }
+  function applyLang(l, save) {
+    LANG = l; document.documentElement.lang = l === 'pt' ? 'pt-BR' : 'en';
+    if (save) try { localStorage.setItem('tp-lang', l); } catch (e) { }
+    if (!TXT) collectText();
+    TXT.forEach(([n, en, k]) => { n.nodeValue = l === 'pt' ? en.match(/^\s*/)[0] + DICT[k] + en.match(/\s*$/)[0] : en; });
+    ATR.forEach(([e, a, v]) => e.setAttribute(a, t(v)));
+    document.querySelectorAll('[data-en]').forEach(e => { e.textContent = t(e.dataset.en); });
+    document.querySelectorAll('.lang').forEach(b => b.setAttribute('aria-label', l === 'pt' ? 'switch to english' : 'mudar para português'));
+    LANGHOOKS.forEach(f => f());
+    if (typeof route !== 'undefined') { document.title = t(document.title.replace(/^.*$/, TITLES[route] || document.title)); if (route === 'home') layout(); else if (route === 'cue') cueLayout(); }
+  }
+  const TITLE_EN = { home: '.tinypeep', cue: 'cue · .tinypeep', omni: 'omni · .tinypeep', about: 'about · .tinypeep' };
+
   const $ = s => document.querySelector(s);
   const scene = $('#scene'), wall = $('#wall'), giant = $('#giant'), peekbox = $('#peekbox'), zz = $('#zz');
   const tv = $('#tv'), keys = $('#keys'), mug = $('#mug'), vid = $('#vid');
@@ -1214,7 +1254,7 @@ footer { padding-top: var(--s8); }
     $('#footer').classList.toggle('short', name === 'home');
     if (!keepVideo) { if (name === 'cue') vslot.appendChild(vid); else tvwin.appendChild(vid); }
     if (!RM) vid.play().catch(() => {});
-    document.title = TITLES[name];
+    document.title = t(TITLES[name]);
     if (name === 'home') requestAnimationFrame(() => { layout(); });
     if (name === 'cue') requestAnimationFrame(() => { cueLayout(); });
   }
@@ -1370,7 +1410,7 @@ footer { padding-top: var(--s8); }
       chapter(i) { const c = CH[clamp(i, 0, CH.length - 1)]; S.t = c.t + .5; api.paint(); api.preview(c); },
       preview(c) {
         if (!c) { cw.classList.remove('prev'); return; }
-        prev.querySelector('span').textContent = String(CH.indexOf(c) + 1).padStart(2, '0') + ' · ' + c.n;
+        prev.querySelector('span').textContent = String(CH.indexOf(c) + 1).padStart(2, '0') + ' · ' + t(c.n);
         cw.classList.add('prev');
         { const im = prev.querySelector('img'), sp = prev.querySelector('span'); im.style.width = ''; im.style.width = Math.max(im.offsetWidth, sp.scrollWidth) + 'px'; }
         const cr = cw.getBoundingClientRect(), br = tbar.getBoundingClientRect(), pw = prev.offsetWidth, sc = cr.width / cw.offsetWidth || 1;
@@ -1525,9 +1565,9 @@ footer { padding-top: var(--s8); }
   }));
 
   /* ---------- the statement lights up word by word ---------- */
-  const rv = $('#reveal');
-  rv.innerHTML = rv.textContent.trim().split(/\s+/).map(w => `<span>${w}</span>`).join(' ');
-  const rvw = [...rv.children];
+  const rv = $('#reveal'); rv.dataset.src = rv.textContent.trim(); let rvw = [];
+  function splitReveal() { rv.innerHTML = t(rv.dataset.src).split(/\s+/).map(w => `<span>${w}</span>`).join(' '); rvw = [...rv.children]; }
+  splitReveal(); LANGHOOKS.push(() => { splitReveal(); reveal(); });
   function reveal() {
     if (RM) { rvw.forEach(s => s.classList.add('on')); return; }
     const r = rv.getBoundingClientRect(), p = clamp((innerHeight * .82 - r.top) / (r.height + innerHeight * .3), 0, 1), n = Math.round(p * rvw.length);
@@ -1641,14 +1681,14 @@ footer { padding-top: var(--s8); }
   /* ---------- up next: pick a song ---------- */
   const qli = $$('#queue li:not(.add)');
   qli.forEach((li, i) => li.addEventListener('click', () => {
-    qli.forEach((x, j) => { x.classList.toggle('now', j === i); x.querySelector('.qs').textContent = j === i ? 'now playing' : j === i + 1 ? 'next' : `${j + 1} / ${qli.length}`; });
+    qli.forEach((x, j) => { x.classList.toggle('now', j === i); setT(x.querySelector('.qs'), j === i ? 'now playing' : j === i + 1 ? 'next' : `${j + 1} / ${qli.length}`); });
   }));
 
   /* ---------- new in 1.4: three small machines ---------- */
   const chbar = $('#chbar'), chlbl = $('#chlbl'), CHP = [{ p: 4, n: '01 · opening' }, { p: 25, n: '02 · the dark side' }, { p: 51, n: '03 · first light' }, { p: 76, n: '04 · orbit' }];
   let ci = 1, cdir = 1, chI = 0;
   const chGo = () => {
-    const c = CHP[ci]; [chbar, chlbl].forEach(el => el.style.setProperty('--p', (c.p + (ci ? .6 : 0)) + '%')); chlbl.textContent = c.n;
+    const c = CHP[ci]; [chbar, chlbl].forEach(el => el.style.setProperty('--p', (c.p + (ci ? .6 : 0)) + '%')); setT(chlbl, c.n);
     const k = $(cdir > 0 ? '#cpd' : '#cpu'); k.classList.remove('press'); void k.offsetWidth; k.classList.add('press');
     if (ci + cdir > 3 || ci + cdir < 0) cdir = -cdir; ci += cdir;
   };
@@ -1658,7 +1698,7 @@ footer { padding-top: var(--s8); }
   const meterGo = () => {
     mt = (mt + 1) % 40; const busy = mt < 22;
     bars.forEach((b, i) => b.style.setProperty('--h', (busy ? 12 * (2 + Math.round(Math.random() * 7 * (1 - Math.abs(i - 5.5) / 9))) : 12) + 'px'));
-    meterl.textContent = busy ? 'playing' : 'nothing happening. resting.';
+    setT(meterl, busy ? 'playing' : 'nothing happening. resting.');
   };
   meterGo();
   seen($('#meter'), v => { clearInterval(mI); if (v && !RM) mI = setInterval(meterGo, 140); });
@@ -1689,8 +1729,8 @@ footer { padding-top: var(--s8); }
     }
     W2.paint(); W2.show(S.playing ? 1600 : 0); pressCap(k); return true;
   }
-  dwin.addEventListener('focus', () => { dwin.classList.add('awake'); kstate.classList.add('live'); kstate.textContent = 'listening. press esc to let go.'; W2.show(); });
-  dwin.addEventListener('blur', () => { dwin.classList.remove('awake', 'sheeton', 'qon', 'mini'); setFull(false); kstate.classList.remove('live'); kstate.textContent = 'click the picture, then press a key.'; });
+  dwin.addEventListener('focus', () => { dwin.classList.add('awake'); kstate.classList.add('live'); setT(kstate, 'listening. press esc to let go.'); W2.show(); });
+  dwin.addEventListener('blur', () => { dwin.classList.remove('awake', 'sheeton', 'qon', 'mini'); setFull(false); kstate.classList.remove('live'); setT(kstate, 'click the picture, then press a key.'); });
   dwin.addEventListener('keydown', e => { if (e.ctrlKey || e.metaKey || e.altKey) return; const k = e.key.length === 1 ? e.key.toLowerCase() : e.key; if (act(k === '/' && e.shiftKey ? '?' : k, e.shiftKey)) e.preventDefault(); });
   dwin.addEventListener('pointermove', () => { if (dwin.classList.contains('awake')) W2.show(W2.S.playing ? 1600 : 0); });
   const qp = document.createElement('div'); qp.className = 'qp';
@@ -1743,6 +1783,8 @@ footer { padding-top: var(--s8); }
 
   /* ================= start ================= */
   addEventListener('resize', () => { if (route === 'home') layout(); else if (route === 'cue') cueLayout(); }, { passive: true });
+  applyLang(LANG);
+  document.querySelectorAll('.lang').forEach(b => b.addEventListener('click', () => applyLang(LANG === 'pt' ? 'en' : 'pt', true)));
   (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => {
     show(fromHash()); if (route === 'home') layout(); shape();
     if (RM) { scene.classList.add('tvon', 'on'); sink = .1; tsink = .1; look.x = tlook.x = -.7; render(); shadows(); return; }
