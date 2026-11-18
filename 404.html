@@ -231,7 +231,7 @@ a.slot:hover .lab span, a.slot:focus-visible .lab span { color: var(--fg-2); }
 .hmeta .down { display: flex; align-items: center; gap: var(--s2); }
 .hmeta .down svg { width: 15px; height: 9px; animation: nudge 1.6s steps(2) infinite; }
 @keyframes nudge { 50% { transform: translateY(6px); } }
-.steps { position: absolute; z-index: 3; opacity: 0; }
+.steps { position: absolute; z-index: 3; opacity: 0; pointer-events: none; }
 .step { position: absolute; left: 0; right: 0; top: 0; opacity: 0; transform: translateY(16px); transition: opacity .3s, transform .5s cubic-bezier(.2, .8, .2, 1); }
 .step.on { opacity: 1; transform: none; transition-delay: .1s; }
 .step .t-lead { margin-top: var(--s1); }
@@ -253,6 +253,11 @@ a.slot:hover .lab span, a.slot:focus-visible .lab span { color: var(--fg-2); }
 .ic .o { fill: rgb(0 0 0 / .45); }
 .ic .f { fill: #fff; }
 .cw .b { position: relative; display: block; pointer-events: auto; }
+.dwin .cw .b, .dwin .cw [data-act] { cursor: pointer; }
+.cw .b.tg { opacity: .45; } .cw .b.tg.on { opacity: 1; }
+.cw .spd { padding: calc(var(--u) * 2); margin: calc(var(--u) * -2); }
+.cw .tbar, .cw .vol { background-clip: content-box; }
+.dwin .cw .tbar::before, .dwin .cw .vol::before { content: ""; position: absolute; left: 0; right: 0; top: calc(var(--u) * -5); bottom: calc(var(--u) * -5); }
 .cw-top { position: absolute; left: 0; right: 0; top: 0; display: flex; justify-content: space-between; align-items: center; padding: calc(var(--u) * 6) calc(var(--u) * 7); }
 .cw-top .tr { display: flex; gap: calc(var(--u) * 6); align-items: center; }
 .cw-bar { position: absolute; left: 6%; right: 6%; bottom: 6%; }
@@ -275,18 +280,18 @@ a.slot:hover .lab span, a.slot:focus-visible .lab span { color: var(--fg-2); }
 .cw.mute .v-off, .cw.paused .i-play { display: block; }
 .cw-prev { position: absolute; display: none; left: 0; bottom: 0; padding: calc(var(--u) * 2); background: #000; box-shadow: 0 0 0 var(--u) #2c2c31; transform: translateX(-50%); }
 .cw.prev .cw-prev { display: block; }
-.cw-prev img { width: calc(var(--u) * 64); aspect-ratio: 16 / 9; object-fit: cover; }
-.cw-prev span { display: block; margin-top: calc(var(--u) * 3); text-align: center; white-space: nowrap; }
+.cw-prev img { display: block; width: calc(var(--u) * 64); aspect-ratio: 16 / 9; object-fit: cover; }
+.cw-prev span { display: block; margin-top: calc(var(--u) * 2); padding-inline: calc(var(--u) * 2); text-align: center; white-space: nowrap; font-size: var(--pfs, 10px); line-height: 1.6; }
 .cw-tip { position: absolute; display: none; padding: calc(var(--u) * 3) calc(var(--u) * 4); background: #000; box-shadow: 0 0 0 var(--u) #2c2c31; white-space: nowrap; transform: translateX(-50%); }
 .cw-tip span { color: #8a8a90; margin-left: calc(var(--u) * 5); }
 .cw.tipon .cw-tip { display: block; }
-.narrow .cw .zr .b:not(.keep), .narrow .cw .vol, .narrow .cw .spd { display: none; }
+.narrow .cw .zr .b:not(.keep), .narrow .cw .vol, .narrow .cw .spd, .narrow .cw-top .tr .ic:not(:first-child) { display: none; }
 .subline { position: absolute; left: 50%; bottom: 30%; z-index: 1; transform: translateX(-50%); margin: 0; width: max-content; max-width: 84%; text-align: center; font-family: "Segoe UI", system-ui, sans-serif; -webkit-font-smoothing: auto; font-weight: 600; font-size: calc(var(--u) * 11); line-height: 1.3; color: #fff; display: none;
   padding: calc(var(--u) * 1) calc(var(--u) * 4); background: rgb(0 0 0 / .72); }
 .subline.on { display: block; }
-.cursor { position: absolute; left: 0; top: 0; z-index: 5; opacity: 0; pointer-events: none; --u: 2px; transition: transform 1.1s cubic-bezier(.3, 0, .15, 1), opacity .2s steps(2); }
+.cursor { position: absolute; left: 0; top: 0; z-index: 5; opacity: 0; pointer-events: none; transition: transform 1.1s cubic-bezier(.4, 0, .2, 1), opacity .15s steps(2); }
 .cursor.on { opacity: 1; }
-.cursor .ic .o { fill: #000; }
+.cursor svg { display: block; filter: drop-shadow(0 1px 1px rgb(0 0 0 / .35)); }
 
 /* ---------- the statement ---------- */
 .cue-statement { padding-top: var(--s9); }
@@ -418,6 +423,15 @@ a.slot:hover .lab span, a.slot:focus-visible .lab span { color: var(--fg-2); }
 .fullhint { position: absolute; z-index: 3; left: 50%; top: var(--s4); transform: translateX(-50%); padding: var(--s1) var(--s3); background: #000; box-shadow: 0 0 0 3px #2c2c31; font-size: 20px; line-height: 28px; display: none; white-space: nowrap; }
 .dwin.full .fullhint { display: block; }
 .kstate { margin-top: var(--s3); }
+.dwin.mini { inset: auto 0 0 auto; width: 46%; height: auto; aspect-ratio: 16 / 9; box-shadow: 0 24px 56px rgb(0 0 0 / .6); }
+.qp { position: absolute; z-index: 3; right: 4%; top: 14%; display: none; min-width: 34%; padding: calc(var(--u) * 6); background: rgb(0 0 0 / .9); box-shadow: 0 0 0 var(--u) #2c2c31; font-size: var(--fs, 20px); line-height: 1.5; }
+.dwin.qon .qp { display: block; }
+.qp h4 { color: #8a8a90; margin-bottom: calc(var(--u) * 3); }
+.qp li { display: flex; justify-content: space-between; gap: calc(var(--u) * 8); color: #c3c6cf; }
+.qp li.now { color: #fff; }
+.qp li span { color: #8a8a90; }
+/* images and videos are scenery: no dragging them out, no opening them in a tab */
+img, video { -webkit-user-drag: none; user-select: none; pointer-events: none; }
 .kstate.live { color: var(--fg); }
 
 /* ---------- numbers and specs ---------- */
@@ -463,7 +477,8 @@ a.slot:hover .lab span, a.slot:focus-visible .lab span { color: var(--fg-2); }
   .reveal { font-size: 40px; line-height: 44px; }
   .cue-statement { padding-top: var(--s8); }
   .t-mini { height: 440px; } .t-remote { height: 640px; } .t-subs { height: 520px; } .t-queue { height: 560px; }
-  .mp { width: 64%; }
+  .mp { width: 56%; }
+  .hint { left: var(--s2); top: var(--s2); max-width: 38%; padding: 4px 8px; }
   .mtools { gap: var(--s2); }
   .seg .lg { display: none; } .seg .sh { display: inline; }
   .seg button { padding-inline: var(--s2); }
@@ -589,6 +604,41 @@ footer.short .fgrid { padding-top: var(--s5); box-shadow: inset 0 3px 0 #1c1c20;
 .s-tv .lab .l2 { display: none; }
 .s-tv:hover .lab .l1, .s-tv:focus-visible .lab .l1 { display: none; }
 .s-tv:hover .lab .l2, .s-tv:focus-visible .lab .l2 { display: block; color: var(--fg); }
+
+/* =================== tracking: tight when big, native when small =================== */
+/* one art pixel is .1em, so these steps keep every glyph on whole pixels */
+/* the face already sits one art pixel apart: display sizes keep it, mid sizes lose half a pixel */
+.t-h2 { letter-spacing: -.05em; }
+.t-lead { letter-spacing: -2px; }
+.t-cap { letter-spacing: 0; }
+/* =================== footer =================== */
+footer { padding-top: var(--s8); }
+.fscene { height: var(--s6); }
+.fgrid { padding-top: var(--s5); row-gap: var(--s5); }
+.fgrid > div:first-child { grid-column: 1 / span 4; }
+.fgrid > div:nth-child(2) { grid-column: 6 / span 2; }
+.fgrid > div:nth-child(3) { grid-column: 8 / span 2; }
+.fgrid > div:nth-child(4) { grid-column: 10 / span 3; }
+.fgrid .fw { font-size: 40px; line-height: 44px; letter-spacing: -2px; }
+.fgrid .ft { margin-top: var(--s1); }
+.fgrid h4 { margin-bottom: 12px; }
+.fgrid ul { gap: 4px; }
+.fgrid li { line-height: 28px; }
+.fbase { margin-top: var(--s6); padding-top: var(--s3); box-shadow: inset 0 3px 0 #1c1c20; color: var(--fg-3); }
+@media (max-width: 1100px) {
+  .fgrid > div:first-child { grid-column: 1 / -1; }
+  .fgrid > div:nth-child(2), .fgrid > div:nth-child(3) { grid-column: span 4; }
+  .fgrid > div:nth-child(4) { grid-column: span 4; }
+}
+@media (max-width: 760px) {
+  .t-lead { letter-spacing: -1px; }
+  footer { padding-top: var(--s7); }
+  .fgrid { row-gap: var(--s4); }
+  .fgrid > div:nth-child(2), .fgrid > div:nth-child(3) { grid-column: span 2 !important; }
+  .fgrid > div:nth-child(4) { grid-column: 1 / -1 !important; }
+  .fgrid .fw { font-size: 30px; line-height: 36px; letter-spacing: -1px; }
+  .fbase { flex-direction: column; gap: var(--s1); }
+}
 </style>
 </head>
 <body>
@@ -723,7 +773,7 @@ footer.short .fgrid { padding-top: var(--s5); box-shadow: inset 0 3px 0 #1c1c20;
       <div class="mwin px" id="mwin">
         <canvas id="mglow" width="64" height="36" aria-hidden="true"></canvas>
         <canvas id="spec" aria-hidden="true"></canvas>
-        <img class="mcover" id="mcover" src="/img/cover.jpg" alt="album cover: a glass orchid growing from the asphalt" loading="lazy">
+        <img draggable="false" class="mcover" id="mcover" src="/img/cover.jpg" alt="album cover: a glass orchid growing from the asphalt" loading="lazy">
         <p class="mtext" id="mtext"><b>antropoceno</b><span>fóssil de glitter</span></p>
       </div>
       <div class="mtools">
@@ -750,19 +800,19 @@ footer.short .fgrid { padding-top: var(--s5); box-shadow: inset 0 3px 0 #1c1c20;
     <div class="bento grid body-gap">
       <article class="tile t-mini px">
         <div class="art desk" id="desk">
-          <img src="/img/desk.jpg" alt="" loading="lazy">
+          <img draggable="false" src="/img/desk.jpg" alt="" loading="lazy">
           <div class="mp" id="mp"><video id="mpv" src="/media/cue-loop.mp4" poster="/img/cue-poster.jpg" muted loop playsinline preload="none" aria-label="the mini player, playing the film"></video></div>
           <span class="hint" id="mphint">drag it. let go near a corner.</span>
         </div>
         <div class="copy"><h3 class="t-h3">the mini player.</h3><p class="t-small">ctrl+m and the film moves to a small window. it stays where you leave it, and glides into a corner when you let go beside one.</p></div>
       </article>
       <article class="tile t-remote px">
-        <div class="art"><img src="/img/remote.jpg" alt="Cue's phone remote: the song, a progress bar and a click wheel" loading="lazy"></div>
+        <div class="art"><img draggable="false" src="/img/remote.jpg" alt="Cue's phone remote: the song, a progress bar and a click wheel" loading="lazy"></div>
         <div class="copy"><h3 class="t-h3">your phone is the remote.</h3><p class="t-small">scan a QR code on the same network. nothing to install. a throwback click wheel for time, volume and up next.</p></div>
       </article>
       <article class="tile t-subs px">
         <div class="art sart" id="sart">
-          <img src="/img/warm.jpg" alt="" loading="lazy">
+          <img draggable="false" src="/img/warm.jpg" alt="" loading="lazy">
           <p class="sline" id="sline">every star you see is already the past.</p>
         </div>
         <div class="copy">
@@ -776,9 +826,9 @@ footer.short .fgrid { padding-top: var(--s5); box-shadow: inset 0 3px 0 #1c1c20;
       <article class="tile t-queue px">
         <div class="art qart">
           <ol class="queue" id="queue">
-            <li class="now"><img src="/img/q0.jpg" alt=""><span><b>antropoceno</b><em><span class="qs">now playing</span><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span></em></span></li>
-            <li><img src="/img/q1.jpg" alt=""><span><b>estrato</b><em><span class="qs">next</span><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span></em></span></li>
-            <li><img src="/img/q2.jpg" alt=""><span><b>testemunho</b><em><span class="qs">3 / 3</span><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span></em></span></li>
+            <li class="now"><img draggable="false" src="/img/q0.jpg" alt=""><span><b>antropoceno</b><em><span class="qs">now playing</span><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span></em></span></li>
+            <li><img draggable="false" src="/img/q1.jpg" alt=""><span><b>estrato</b><em><span class="qs">next</span><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span></em></span></li>
+            <li><img draggable="false" src="/img/q2.jpg" alt=""><span><b>testemunho</b><em><span class="qs">3 / 3</span><span class="eq" aria-hidden="true"><i></i><i></i><i></i></span></em></span></li>
             <li class="add"><span class="plus" aria-hidden="true">+</span><span><b>add tracks</b><em>or drag them here</em></span></li>
           </ol>
           <div class="qfoot" aria-hidden="true"><span>+ files</span><span>+ folder</span><span>clear queue</span></div>
@@ -798,9 +848,9 @@ footer.short .fgrid { padding-top: var(--s5); box-shadow: inset 0 3px 0 #1c1c20;
       <article class="px" style="--c:#b07ae0">
         <div class="art">
           <div class="thumbs" aria-hidden="true">
-            <figure><img src="/img/tp0.png" alt=""><i style="--w:62%"></i><figcaption>12 min</figcaption></figure>
-            <figure><img src="/img/tp1.png" alt=""><i style="--w:30%"></i><figcaption>3 songs</figcaption></figure>
-            <figure><img src="/img/tp2.png" alt=""><i style="--w:84%"></i><figcaption>4 min</figcaption></figure>
+            <figure><img draggable="false" src="/img/tp0.png" alt=""><i style="--w:62%"></i><figcaption>12 min</figcaption></figure>
+            <figure><img draggable="false" src="/img/tp1.png" alt=""><i style="--w:30%"></i><figcaption>3 songs</figcaption></figure>
+            <figure><img draggable="false" src="/img/tp2.png" alt=""><i style="--w:84%"></i><figcaption>4 min</figcaption></figure>
           </div>
         </div>
         <div class="copy"><h3 class="t-h3">a home with pictures.</h3><p class="t-small">every recent file shows where you stopped, or the album cover, and how much is left.</p></div>
@@ -1286,16 +1336,16 @@ footer.short .fgrid { padding-top: var(--s5); box-shadow: inset 0 3px 0 #1c1c20;
   const wins = [];
   function cueWindow(root, o = {}) {
     const cw = document.createElement('div'); cw.className = 'cw';
-    const B = (ic, tip, key, cls = '') => `<span class="b ${cls}" data-tip="${tip}" data-key="${key}">${ic}</span>`;
-    const left = o.mini ? B(bm(IC.vol, 'v-on') + bm(IC.mute, 'v-off'), 'volume', 'm', 'vb') : `${B(bm(IC.vol, 'v-on') + bm(IC.mute, 'v-off'), 'volume', 'm', 'vb')}<span class="vol"><i></i><em></em></span><span class="spd">1×</span>`;
-    const right = o.mini ? B(bm(IC.more), 'more', '', 'keep') : `${B(bm(IC.queue), 'up next', 'q')}${B(bm(IC.rep), 'repeat', 'l')}${B(bm(IC.cc), 'subtitles', 's', 'cc')}${B(bm(IC.mini), 'mini player', 'ctrl+m')}${B(bm(IC.full), 'full screen', 'f', 'keep fs')}${B(bm(IC.more), 'more', '', 'keep')}`;
+    const B = (ic, tip, key, act, cls = '') => `<span class="b ${cls}" data-act="${act}" data-tip="${tip}" data-key="${key}">${ic}</span>`;
+    const left = o.mini ? B(bm(IC.vol, 'v-on') + bm(IC.mute, 'v-off'), 'volume', 'm', 'vol') : `${B(bm(IC.vol, 'v-on') + bm(IC.mute, 'v-off'), 'volume', 'm', 'vol')}<span class="vol" data-act="volbar"><i></i><em></em></span><span class="spd b" data-act="speed" data-tip="speed" data-key="[ ]">1×</span>`;
+    const right = o.mini ? B(bm(IC.more), 'more', '', 'more', 'keep') : `${B(bm(IC.queue), 'up next', 'q', 'queue')}${B(bm(IC.rep), 'repeat', 'l', 'rep', 'tg')}${B(bm(IC.cc), 'subtitles', 's', 'cc')}${B(bm(IC.mini), 'mini player', 'ctrl+m', 'mini')}${B(bm(IC.full), 'full screen', 'f', 'full', 'keep')}${B(bm(IC.more), 'more', '?', 'more', 'keep')}`;
     cw.innerHTML = `
-      <div class="cw-top"><span class="tl">${B(bm(IC.back), o.mini ? 'back to full size' : 'home', 'esc')}</span><span class="tr">${B(bm(IC.pin), 'always on top', 'ctrl+t')}${o.mini ? '' : bm(IC.min) + bm(IC.max) + bm(IC.close)}</span></div>
+      <div class="cw-top"><span class="tl">${B(bm(IC.back), o.mini ? 'back to full size' : 'home', 'esc', 'home')}</span><span class="tr">${B(bm(IC.pin), 'always on top', 'ctrl+t', 'pin', 'tg')}${o.mini ? '' : B(bm(IC.min), 'minimize', '', 'min') + B(bm(IC.max), 'maximize', 'f', 'full') + B(bm(IC.close), 'close', '', 'close')}</span></div>
       <div class="cw-bar">
-        <div class="r1"><div class="z zl">${left}</div><div class="z zc">${B(bm(IC.rew), 'back 15 s', '')}${B(bm(IC.play, 'i-play') + bm(IC.pause, 'i-pause'), 'play / pause', 'space', 'pp')}${B(bm(IC.fwd), 'forward 15 s', '')}</div><div class="z zr">${right}</div></div>
-        <div class="r2"><span class="tm t0"></span><span class="tbar">${CH.slice(1).map(c => `<i class="ch" style="left:${(c.t / TOTAL * 100).toFixed(2)}%"></i>`).join('')}<i class="pl"></i><i class="kn"></i></span><span class="tm t1">${fmt(TOTAL)}</span></div>
+        <div class="r1"><div class="z zl">${left}</div><div class="z zc">${B(bm(IC.rew), 'back 15 s', 'shift+left', 'rew')}${B(bm(IC.play, 'i-play') + bm(IC.pause, 'i-pause'), 'play / pause', 'space', 'pp', 'pp')}${B(bm(IC.fwd), 'forward 15 s', 'shift+right', 'fwd')}</div><div class="z zr">${right}</div></div>
+        <div class="r2"><span class="tm t0"></span><span class="tbar" data-act="seekbar">${CH.slice(1).map(c => `<i class="ch" style="left:${(c.t / TOTAL * 100).toFixed(2)}%"></i>`).join('')}<i class="pl"></i><i class="kn"></i></span><span class="tm t1">${fmt(TOTAL)}</span></div>
       </div>
-      <div class="cw-prev"><img src="/img/cue-poster.jpg" alt=""><span></span></div>
+      <div class="cw-prev"><img draggable="false" src="/img/cue-poster.jpg" alt=""><span></span></div>
       <div class="cw-tip"></div>`;
     root.appendChild(cw);
     const sub = document.createElement('p'); sub.className = 'subline'; sub.textContent = 'every star you see is already the past.'; root.appendChild(sub);
@@ -1322,6 +1372,7 @@ footer.short .fgrid { padding-top: var(--s5); box-shadow: inset 0 3px 0 #1c1c20;
         if (!c) { cw.classList.remove('prev'); return; }
         prev.querySelector('span').textContent = String(CH.indexOf(c) + 1).padStart(2, '0') + ' · ' + c.n;
         cw.classList.add('prev');
+        { const im = prev.querySelector('img'), sp = prev.querySelector('span'); im.style.width = ''; im.style.width = Math.max(im.offsetWidth, sp.scrollWidth) + 'px'; }
         const cr = cw.getBoundingClientRect(), br = tbar.getBoundingClientRect(), pw = prev.offsetWidth, sc = cr.width / cw.offsetWidth || 1;
         const x = clamp((br.left - cr.left) / sc + (br.width / sc) * c.t / TOTAL, pw / 2 + 8, cw.offsetWidth - pw / 2 - 8);
         const r1 = cw.querySelector('.r1').getBoundingClientRect(); prev.style.left = x + 'px'; prev.style.bottom = ((cr.bottom - r1.top) / sc + 8) + 'px';
@@ -1337,6 +1388,14 @@ footer.short .fgrid { padding-top: var(--s5); box-shadow: inset 0 3px 0 #1c1c20;
       });
       b.addEventListener('pointerleave', () => cw.classList.remove('tipon'));
     });
+    /* the bar follows the window's size, like cue does: smaller pixels in a small window, and only what matters most when it's narrow */
+    if (window.ResizeObserver) new ResizeObserver(() => {
+      const w = root.clientWidth; if (!w) return;
+      root.style.setProperty('--u', (w >= 1150 ? 3 : w >= 560 ? 2 : 1) + 'px');
+      root.style.setProperty('--fs', (w >= 560 ? 20 : 10) + 'px');
+      root.style.setProperty('--pfs', (w >= 1150 ? 20 : 10) + 'px');
+      root.classList.toggle('narrow', w < 640);
+    }).observe(root);
     api.paint(); wins.push(api);
     return api;
   }
@@ -1346,7 +1405,11 @@ footer.short .fgrid { padding-top: var(--s5); box-shadow: inset 0 3px 0 #1c1c20;
   /* ---------- the film ---------- */
   const film = $('#film'), pin = $('#pin'), scr = $('#screen'), hcopy = $('#herocopy'), stepsEl = $('#steps'), fline = $('#fline'), flight = $('#flight'), fmir = $('#fmirror'), cursor = $('#cursor'), pbar = $('#pbar');
   const W1 = cueWindow(scr);
-  cursor.innerHTML = bm(IC.cursor);
+  {
+    const A = ['B...........', 'BB..........', 'BWB.........', 'BWWB........', 'BWWWB.......', 'BWWWWB......', 'BWWWWWB.....', 'BWWWWWWB....', 'BWWWWWWWB...', 'BWWWWWWWWB..', 'BWWWWWWWWWB.', 'BWWWWWWBBBBB', 'BWWWBWWB....', 'BWWB.BWWB...', 'BWB..BWWB...', 'BB....BWWB..', 'B.....BWWB..', '.......BWWB.', '.......BBB..'];
+    let r = ''; A.forEach((row, y) => [...row].forEach((c, x) => { if (c !== '.') r += `<rect x="${x}" y="${y}" width="1" height="1" fill="${c === 'B' ? '#000' : '#fff'}"/>`; }));
+    cursor.innerHTML = `<svg viewBox="0 0 12 19" width="12" height="19" shape-rendering="crispEdges" aria-hidden="true">${r}</svg>`;
+  }
   let FR = { x: 0, y: 0, w: 1, h: 1, vw: 1, vh: 1 }, fstep = -1, userHover = false, uhT = 0;
   function filmLayout() {
     const vw = pin.clientWidth, vh = pin.clientHeight, mob = vw <= 760;
@@ -1371,8 +1434,6 @@ footer.short .fgrid { padding-top: var(--s5); box-shadow: inset 0 3px 0 #1c1c20;
     }
     stepsEl.classList.toggle('side', side);
     Object.assign(scr.style, { left: x + 'px', top: y + 'px', width: w + 'px', height: h + 'px' });
-    scr.style.setProperty('--u', (w >= 1150 ? 3 : 2) + 'px');
-    scr.classList.toggle('narrow', w < 640);
     Object.assign(stepsEl.style, { left: sx0 + 'px', top: sy0 + 'px', width: sw + 'px', height: T + 'px' });
     fline.style.top = (y + h) + 'px';
     Object.assign(fmir.style, { left: x + 'px', top: (y + h + 3) + 'px', width: w + 'px', height: Math.round(h * .3) + 'px' });
@@ -1535,11 +1596,12 @@ footer.short .fgrid { padding-top: var(--s5); box-shadow: inset 0 3px 0 #1c1c20;
     if (RM) { bw = bwTo; mDraw(performance.now()); }
   }));
   /* point at the cover and it leans away; it settles flat when you leave */
-  mcov.addEventListener('pointermove', e => {
+  mwin.addEventListener('pointermove', e => {
     if (RM) return; const r = mcov.getBoundingClientRect(), px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+    if (px < 0 || px > 1 || py < 0 || py > 1 || mlook === 'spec') { if (mcov.classList.contains('lean')) { mcov.classList.remove('lean'); mcov.style.transform = ''; } return; }
     mcov.classList.add('lean'); mcov.style.transform = `perspective(900px) rotateY(${((px - .5) * 16).toFixed(2)}deg) rotateX(${((.5 - py) * 16).toFixed(2)}deg)`;
   });
-  mcov.addEventListener('pointerleave', () => { mcov.classList.remove('lean'); mcov.style.transform = ''; });
+  mwin.addEventListener('pointerleave', () => { mcov.classList.remove('lean'); mcov.style.transform = ''; });
 
   /* ---------- the mini player: drag it, let go beside a corner and it glides in ---------- */
   const desk = $('#desk'), mp = $('#mp'), mpv = $('#mpv'), W3 = cueWindow(mp, { mini: true, t: 40 });
@@ -1618,6 +1680,8 @@ footer.short .fgrid { padding-top: var(--s5); box-shadow: inset 0 3px 0 #1c1c20;
       case '?': dwin.classList.toggle('sheeton'); break;
       case 'Escape':
         if (dwin.classList.contains('sheeton')) dwin.classList.remove('sheeton');
+        else if (dwin.classList.contains('qon')) dwin.classList.remove('qon');
+        else if (dwin.classList.contains('mini')) dwin.classList.remove('mini');
         else if (dwin.classList.contains('full')) setFull(false);
         else { dwin.blur(); return true; }
         break;
@@ -1626,13 +1690,37 @@ footer.short .fgrid { padding-top: var(--s5); box-shadow: inset 0 3px 0 #1c1c20;
     W2.paint(); W2.show(S.playing ? 1600 : 0); pressCap(k); return true;
   }
   dwin.addEventListener('focus', () => { dwin.classList.add('awake'); kstate.classList.add('live'); kstate.textContent = 'listening. press esc to let go.'; W2.show(); });
-  dwin.addEventListener('blur', () => { dwin.classList.remove('awake', 'sheeton'); setFull(false); kstate.classList.remove('live'); kstate.textContent = 'click the picture, then press a key.'; });
+  dwin.addEventListener('blur', () => { dwin.classList.remove('awake', 'sheeton', 'qon', 'mini'); setFull(false); kstate.classList.remove('live'); kstate.textContent = 'click the picture, then press a key.'; });
   dwin.addEventListener('keydown', e => { if (e.ctrlKey || e.metaKey || e.altKey) return; const k = e.key.length === 1 ? e.key.toLowerCase() : e.key; if (act(k === '/' && e.shiftKey ? '?' : k, e.shiftKey)) e.preventDefault(); });
   dwin.addEventListener('pointermove', () => { if (dwin.classList.contains('awake')) W2.show(W2.S.playing ? 1600 : 0); });
-  dwin.querySelector('.pp').addEventListener('click', e => { e.stopPropagation(); if (document.activeElement === dwin) act(' '); });
-  dwin.querySelector('.vb').addEventListener('click', e => { e.stopPropagation(); if (document.activeElement === dwin) act('m'); });
-  dwin.querySelector('.fs').addEventListener('click', e => { e.stopPropagation(); if (document.activeElement === dwin) act('f'); });
-  dwin.querySelector('.cc').addEventListener('click', e => { e.stopPropagation(); if (document.activeElement === dwin) act('s'); });
+  const qp = document.createElement('div'); qp.className = 'qp';
+  qp.innerHTML = '<h4>up next</h4><ol><li class="now">the dark side<span>now</span></li><li>first light<span>next</span></li><li>orbit<span>3 / 3</span></li></ol>';
+  dwin.appendChild(qp);
+  const SPEEDS = [1, 1.25, 1.5, 2, .5, .75], spdEl = dwin.querySelector('.spd'); let si = 0;
+  dwin.addEventListener('click', e => {
+    const b = e.target.closest('[data-act]'); if (!b || !dwin.contains(b)) return;
+    if (document.activeElement !== dwin) dwin.focus({ preventScroll: true });
+    e.stopPropagation(); const S = W2.S; W2.el.classList.remove('tipon');
+    switch (b.dataset.act) {
+      case 'pp': act(' '); break;
+      case 'vol': act('m'); break;
+      case 'cc': act('s'); break;
+      case 'full': act('f'); break;
+      case 'more': act('?'); break;
+      case 'home': case 'close': case 'min': act('Escape'); break;
+      case 'rew': case 'fwd': act(b.dataset.act === 'rew' ? 'ArrowLeft' : 'ArrowRight', true); break;
+      case 'pin': case 'rep': b.classList.toggle('on'); break;
+      case 'queue': dwin.classList.toggle('qon'); break;
+      case 'mini': dwin.classList.toggle('mini'); break;
+      case 'speed': si = (si + 1) % SPEEDS.length; spdEl.textContent = SPEEDS[si] + '×'; dv.playbackRate = SPEEDS[si]; break;
+      case 'seekbar': case 'volbar': {
+        const r = b.getBoundingClientRect(), f = clamp((e.clientX - r.left) / r.width, 0, 1);
+        if (b.dataset.act === 'seekbar') { S.t = f * TOTAL; if (dv.duration) dv.currentTime = f * dv.duration; } else { S.vol = Math.round(f * 125 / 5) * 5; S.muted = false; }
+        break;
+      }
+    }
+    W2.paint(); W2.show(S.playing ? 1600 : 0);
+  });
   $$('#klist .kc').forEach(c => { c.addEventListener('pointerdown', e => e.preventDefault()); c.addEventListener('click', () => { if (document.activeElement !== dwin) dwin.focus({ preventScroll: true }); act(c.dataset.k); }); });
   seen(dwin, v => { W2.live = v && W2.S.playing; if (RM) return; if (v) { dv.preload = 'auto'; if (W2.S.playing) dv.play().catch(() => {}); } else dv.pause(); });
 
